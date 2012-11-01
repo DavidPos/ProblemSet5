@@ -100,7 +100,6 @@ def buildCoder(shift):
     returns: dict
     """
     encDict = {}
-    String = string.ascii_lowercase + string.ascii_uppercase
     lowList = []
     upperList = []
     toBig = 0
@@ -141,7 +140,23 @@ def applyCoder(text, coder):
     coder: dict with mappings of characters to shifted characters
     returns: text after mapping coder chars to original text
     """
-    ### TODO.
+    encText = ''
+    encDict = coder
+    encList = []
+    count = 0
+
+    for i in text:
+        if i in encDict:
+         encList.insert(count, encDict.get(i))
+         count +=1
+        else:
+            encList.insert(count, i)
+            count +=1
+    encText = encText.join(encList)
+    return encText
+
+
+
 
 
 def applyShift(text, shift):
