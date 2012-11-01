@@ -100,14 +100,35 @@ def buildCoder(shift):
     returns: dict
     """
     encDict = {}
-    letterString = string.ascii_lowercase + string.ascii_uppercase
-    letterList = []
-    for i in letterString:
-        letterList.append(i)
-    for l in letterList:
-        encDict[l] = letterList[letterList.index(l) + shift]
-        print encDict
+    String = string.ascii_lowercase + string.ascii_uppercase
+    lowList = []
+    upperList = []
+    toBig = 0
+    extraCount = 0
+    for i in string.ascii_lowercase:
+        lowList.append(i)
+    for i in string.ascii_uppercase:
+        upperList.append(i)
+
+    for l in upperList:
+        toBig = (upperList.index(l) + shift)
+
+        if toBig >= 26:
+            encDict[l] = upperList[extraCount]
+            extraCount +=1
+        else:
+          encDict[l] = upperList[upperList.index(l) + shift]
+    extraCount = 0
+    for l in lowList:
+        toBig = (lowList.index(l) + shift)
+        if toBig >= 26:
+            encDict[l] = lowList[extraCount]
+            extraCount +=1
+        else:
+          encDict[l] = lowList[lowList.index(l) + shift]
+
     return encDict
+
 
 
 
