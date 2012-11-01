@@ -13,7 +13,7 @@ WORDLIST_FILENAME = "words.txt"
 def loadWords():
     """
     Returns a list of valid words. Words are strings of lowercase letters.
-    
+
     Depending on the size of the word list, this function may
     take a while to finish.
     """
@@ -45,7 +45,7 @@ def randomWord(wordList):
     """
     Returns a random word.
 
-    wordList: list of words  
+    wordList: list of words
     returns: a word from wordList at random
     """
     return random.choice(wordList)
@@ -99,8 +99,18 @@ def buildCoder(shift):
     shift: 0 <= int < 26
     returns: dict
     """
-    
-    
+    encDict = {}
+    letterString = string.ascii_lowercase + string.ascii_uppercase
+    letterList = []
+    for i in letterString:
+        letterList.append(i)
+    for l in letterList:
+        encDict[l] = letterList[letterList.index(l) + shift]
+        print encDict
+    return encDict
+
+
+
 
 def applyCoder(text, coder):
     """
@@ -111,7 +121,7 @@ def applyCoder(text, coder):
     returns: text after mapping coder chars to original text
     """
     ### TODO.
-    
+
 
 def applyShift(text, shift):
     """
@@ -126,7 +136,7 @@ def applyShift(text, shift):
     """
     ### TODO.
     ### HINT: This is a wrapper function.
-    
+
 
 #
 # Problem 2: Decryption
