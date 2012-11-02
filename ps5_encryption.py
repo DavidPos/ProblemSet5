@@ -170,8 +170,10 @@ def applyShift(text, shift):
     shift: amount to shift the text (0 <= int < 26)
     returns: text after being shifted by specified amount.
     """
-    ### TODO.
-    ### HINT: This is a wrapper function.
+    encText = ''
+    codeWord = buildCoder(shift)
+    encText = applyCoder(text, codeWord)
+    return encText
 
 
 #
